@@ -26,3 +26,35 @@ function groupAnagrams(strs: string[]): string[][] {
     // return the values of the map as an array of arrays
     return Array.from(groupedAnagrams.values());
 }
+
+
+function conciseGroupAnagrams(strs: string[]): string[][] {
+    const groupedAnagrams = new Map<string, string[]>();
+
+    for (const str of strs) {
+        const sortedStr = str.split('').sort().join('');
+        const groupedAnagram = groupedAnagrams.get(sortedStr) || [];
+        groupedAnagram.push(str);
+        groupedAnagrams.set(sortedStr, groupedAnagram);
+    }
+
+    return Array.from(groupedAnagrams.values());
+}
+
+
+// Using forEach instead of for loop
+// For each is faster than for loop because it is a native method of the array object
+// Native methods are faster than custom methods because they are optimized for the browser
+
+function groupAnagramsForEach(strs: string[]): string[][] {
+    const groups = new Map<string, string[]>();
+
+    strs.forEach(str => {
+        const sortedStr = str.split('').sort().join('');
+        const group = groups.get(sortedStr) || [];
+        group.push(str);
+        groups.set(sortedStr, group);
+    });
+
+    return Array.from(groups.values());
+}
