@@ -1,4 +1,4 @@
-class Solution {
+class SolutionForValidAnagram {
     /**
      * @param {string} s
      * @param {string} t
