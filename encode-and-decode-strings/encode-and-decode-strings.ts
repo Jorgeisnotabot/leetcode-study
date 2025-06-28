@@ -16,7 +16,14 @@ class Solution {
                 j++;
             }
 
-            const length = 
+            const length = parseInt(str.substring(i, j));
+            const start = j + 1;
+            const end = start + length;
+            result.push(str.substring(start, end));
+
+            i = end;
         }
+
+        return result;
     }
 }
