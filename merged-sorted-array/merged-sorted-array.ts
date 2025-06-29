@@ -8,8 +8,15 @@ function merge(nums1: number[], m: number, nums2: number[], n: number): void {
             nums1[k] = nums1[i];
             i--;
         } else {
-
+            nums1[k] = nums2[j];
+            j--;
         }
+        k--;
     }
-     
+
+    while (j >= 0) {
+        nums1[k] = nums2[j];
+        j--;
+        k--;
+    }
 };
