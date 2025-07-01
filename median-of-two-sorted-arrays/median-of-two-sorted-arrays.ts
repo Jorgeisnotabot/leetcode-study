@@ -31,3 +31,16 @@ function findMedianSortedArrays(nums1: number[], nums2: number[]): number {
 
     return -1;
 };
+
+// Optimized solution
+function OptimizedFindMedianSortedArrays(nums1: number[], nums2: number[]): number {
+    const mergeAndSort = (...nums: number[]) => nums.sort((a, b) => a - b);
+
+    const nums = mergeAndSort(...nums1, ...nums2);
+
+    const index = (nums.length - 1) / 2;
+
+    if (Number.isInteger(index)) return nums[index];
+
+    return (nums[Math.floor(index)] + nums[Math.ceil(index)]) / 2;
+};
